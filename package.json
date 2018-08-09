@@ -23,6 +23,10 @@
   "homepage": "https://github.com/GustavoRSSilva/js-grpc#readme",
   "dependencies": {
     "@grpc/proto-loader": "^0.3.0",
-    "grpc": "^1.13.1"
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "dotenv": "^6.0.0",
+    "grpc": "^1.13.1",
+    "rimraf": "^2.6.2"
   }
 }
