@@ -1,0 +1,25 @@
+{
+  "name": "js-grpc",
+  "version": "1.0.0",
+  "description": "gRPC",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GustavoRSSilva/js-grpc.git"
+  },
+  "keywords": [
+    "grpc"
+  ],
+  "author": "GustavoRSSilva",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GustavoRSSilva/js-grpc/issues"
+  },
+  "homepage": "https://github.com/GustavoRSSilva/js-grpc#readme",
+  "dependencies": {
+    "grpc": "^1.13.1"
+  }
+}
