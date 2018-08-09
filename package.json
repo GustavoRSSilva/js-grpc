@@ -4,7 +4,9 @@
   "description": "gRPC",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start": "npm run build && node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +22,7 @@
   },
   "homepage": "https://github.com/GustavoRSSilva/js-grpc#readme",
   "dependencies": {
+    "@grpc/proto-loader": "^0.3.0",
     "grpc": "^1.13.1"
   }
 }
