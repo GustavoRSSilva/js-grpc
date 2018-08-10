@@ -34,6 +34,7 @@ const options = {
   defaults: true,
   oneofs: true
 }
+
 const packageDefinition = loadSync("./rpc.proto", options)
  // Load gRPC package definition as a gRPC object hierarchy.
 const lnrpcDescriptor = grpc.loadPackageDefinition(packageDefinition)
