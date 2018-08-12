@@ -6,23 +6,23 @@ require('dotenv').config()
 
 // Lnd admin macaroon is at ~/.lnd/admin.macaroon on Linux and
 // ~/Library/Application Support/Lnd/admin.macaroon on Mac
-var m = fs.readFileSync(process.env.ADMIN_MACAROON_PATH);
-var macaroon = m.toString('hex');
+const m = fs.readFileSync(process.env.ADMIN_MACAROON_PATH);
+const macaroon = m.toString('hex');
 
 // build meta data credentials
-var metadata = new grpc.Metadata()
+const metadata = new grpc.Metadata()
 metadata.add('macaroon', macaroon)
-var macaroonCreds = grpc.credentials.createFromMetadataGenerator((_args, callback) => {
+const macaroonCreds = grpc.credentials.createFromMetadataGenerator((_args, callback) => {
   callback(null, metadata);
 });
 
 // build ssl credentials using the cert the same as before
-var lndCert = fs.readFileSync(process.env.TLS_CERT_PATH);
-var sslCreds = grpc.credentials.createSsl(lndCert);
+const lndCert = fs.readFileSync(process.env.TLS_CERT_PATH);
+const sslCreds = grpc.credentials.createSsl(lndCert);
 
 // combine the cert credentials and the macaroon auth credentials
 // such that every call is properly encrypted and authenticated
-var credentials = grpc.credentials.combineChannelCredentials(sslCreds, macaroonCreds);
+const credentials = grpc.credentials.combineChannelCredentials(sslCreds, macaroonCreds);
 
 // Pass the crendentials when creating a channel
 // The following options object closely approximates the existing behavior of grpc.load.
@@ -40,7 +40,7 @@ const packageDefinition = loadSync("./rpc.proto", options)
 const lnrpcDescriptor = grpc.loadPackageDefinition(packageDefinition)
 
 // console.log(lnrpcDescriptor.lnrpc);
-var lnrpc = lnrpcDescriptor.lnrpc;
-var client = new lnrpc.Lightning('127.0.0.1:10009', credentials);
+const lnrpc = lnrpcDescriptor.lnrpc;
+const client = new lnrpc.Lightning('127.0.0.1:10009', credentials);
 
 client.getInfo({}, (err, res) => { console.log(res); });
